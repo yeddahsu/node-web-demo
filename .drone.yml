@@ -4,7 +4,19 @@ pipeline:
     commands:
       - npm install
       - npm test
-      - tar czvf node-web-demo.tar .
+      #- tar czvf node-web-demo.tar .
+  ssh-deploy:
+    image: appleboy/drone-ssh
+    pull: true  # always pull the latest version of the `drone-ssh` plugin
+    #secrets: [ ssh_username, ssh_password ]
+    host: 192.168.2.98
+    port: 22
+    command_timeout: 180
+    script:
+      - cd /home/yedda/deploy  # or whereever you put your `deploy.sh`
+      - sh deploy.sh
+    when:
+      event: [push, tag, deployment]
   slack:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/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
