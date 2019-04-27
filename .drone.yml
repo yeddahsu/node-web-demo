@@ -9,6 +9,7 @@ pipeline:
     image: appleboy/drone-ssh
     pull: true  # always pull the latest version of the `drone-ssh` plugin
     #secrets: [ ssh_username, ssh_password ]
+    secrets: [ 'yedda' ]
     host: 192.168.2.98
     port: 22
     command_timeout: 180
