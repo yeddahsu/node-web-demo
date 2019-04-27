@@ -1,6 +1,6 @@
 
 const request = require('supertest');
-const app = require('./server.js/index.js').app;
+const app = require('./server.js').app;
 const expect = require('expect');
 
 describe('Test function "testMe"', function () {
@@ -11,7 +11,7 @@ describe('Test function "testMe"', function () {
             .expect((res) => {
                 expect(res.body).toMatchObject({
                     name: 'Kent',
-                    age: 100
+                    grade: 100
                 });
             })
             .end(done);
