@@ -8,9 +8,9 @@ pipeline:
   ssh-deploy:
     image: appleboy/drone-ssh
     pull: true  # always pull the latest version of the `drone-ssh` plugin
-    secrets: [ yedda, P@ssw0rd ]
-    #username: yedda
-    #password: 1234
+    #secrets: [ yedda, P@ssw0rd ]
+    username: yedda
+    password: P@ssw0rd
     host: 192.168.2.98
     port: 22
     #command_timeout: 180
