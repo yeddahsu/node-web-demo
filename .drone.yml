@@ -10,6 +10,7 @@ pipeline:
     pull: true  # always pull the latest version of the `drone-ssh` plugin
     #secrets: [ ssh_username, ssh_password ]
     username: yedda
+    password: P@ssw0rd
     host: 192.168.2.98
     port: 22
     command_timeout: 180
