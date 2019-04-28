@@ -5,8 +5,8 @@ pipeline:
       - npm install
       - npm test
       #- tar czvf node-web-demo.tar .
-      - export VERSION=$(git-buildnumber)
-      - echo "GIT_$(git-buildnumber)"
+      - export VERSION={{DRONE_COMMIT_SHA}}
+      - echo "GIT_$(VERSION)"
 
   ssh-deploy:
     image: appleboy/drone-ssh
@@ -29,7 +29,7 @@ pipeline:
     channel: docker
     template: >
       {{#success build.status}}
-        Hello, build {{build.number}} succeeded. Good job. (20190417)
+        Hello, build {{build.number}} succeeded. Good job.
       {{else}}
         Sorry, build {{build.number}} failed. Fix me please.
       {{/success}}
