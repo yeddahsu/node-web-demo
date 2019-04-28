@@ -5,6 +5,9 @@ pipeline:
       - npm install
       - npm test
       #- tar czvf node-web-demo.tar .
+      - export VERSION=$(git-buildnumber)
+      - echo "GIT_$(git-buildnumber)"
+
   ssh-deploy:
     image: appleboy/drone-ssh
     pull: true  # always pull the latest version of the `drone-ssh` plugin
