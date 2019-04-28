@@ -13,3 +13,5 @@ sudo docker build -t="yedda/node-web-demo" .
 # restart service which will use the newly pulled image
 echo "restarting node-web-demo service"
 sudo systemctl start node-web-demo.service
+
+exit 1
