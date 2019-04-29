@@ -5,7 +5,7 @@ var app = express();
 app.get('/', (req, res) => {
     res.status(200).send({
         name: 'Kent',
-        grade: 98
+        grade: 888
     });
 });
 

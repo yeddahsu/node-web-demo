@@ -5,8 +5,8 @@ pipeline:
       - npm install
       - npm test
       #- tar czvf node-web-demo.tar .
-      - export VERSION=$${DRONE_COMMIT}
-      - echo "GIT_$VERSION"
+      #- export VERSION=$${DRONE_COMMIT}
+      #- echo "GIT_$VERSION"
 
   ssh-deploy:
     image: appleboy/drone-ssh
@@ -20,7 +20,7 @@ pipeline:
     command_timeout: 180s
     script:
       - cd /home/yedda/deploy  # or whereever you put your `deploy.sh`
-      - sh deploy.sh
+      - sh deploy.sh $${DRONE_COMMIT}
     when:
       event: [push, tag, deployment]
   slack:
