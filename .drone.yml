@@ -5,7 +5,7 @@ pipeline:
       - npm install
       - npm test
       #- tar czvf node-web-demo.tar .
-      - export VERSION=DRONE_COMMIT_SHA
+      - export VERSION=$${DRONE_COMMIT}
       - echo "GIT_$VERSION"
 
   ssh-deploy:
