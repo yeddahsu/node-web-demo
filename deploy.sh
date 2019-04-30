@@ -9,10 +9,10 @@ sudo docker rmi yedda/node-web-demo:latest
 # create new image for node-web-demo
 echo "create new image for node-web-demo"
 cd /home/yedda/node-web-demo
-sudo git pull origin master
+#sudo git pull origin master
+sudo git fetch
+sudo git checkout $1
 sudo docker build -t="yedda/node-web-demo" .
 # restart service which will use the newly pulled image
 echo "restarting node-web-demo service"
 sudo systemctl start node-web-demo.service
-
-#exit 1
