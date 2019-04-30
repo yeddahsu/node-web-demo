@@ -30,7 +30,7 @@ pipeline:
     channel: docker
     template: >
       {{#success build.status}}
-        Hello, build {{build.number}} succeeded. Good job.
+        Hello, build {{build.number}} commit $${DRONE_COMMIT} succeeded. Good job.
       {{else}}
-        Sorry, build {{build.number}} failed. Fix me please.
+        Sorry, build {{build.number}} commit $${DRONE_COMMIT} failed. Fix me please.
       {{/success}}
