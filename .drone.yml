@@ -4,14 +4,10 @@ pipeline:
     commands:
       - npm install
       - npm test
-      #- tar czvf node-web-demo.tar .
-      #- export VERSION=$${DRONE_COMMIT}
-      #- echo "GIT_$VERSION"
 
   ssh-deploy:
     image: appleboy/drone-ssh
     pull: true  # always pull the latest version of the `drone-ssh` plugin
-    #secrets: [ ssh_username, ssh_password ]
     username: yedda
     password:
       from_secret: ssh_password
@@ -20,7 +16,7 @@ pipeline:
     command_timeout: 180s
     script:
       - echo ${DRONE_COMMIT}
-      - cd /home/yedda/deploy  # or whereever you put your `deploy.sh`
+      - cd /home/yedda/deploy
       - sh deploy.sh ${DRONE_COMMIT}
     when:
       event: [push, tag, deployment]
@@ -30,7 +26,7 @@ pipeline:
     channel: docker
     template: >
       {{#success build.status}}
-        Hello, build \#{{build.number}} commit {{build.commit}} succeeded. Good job.
+        Hello, build {{build.number}} commit {{build.commit}} succeeded. Good job.
       {{else}}
-        Sorry, build \#{{build.number}} commit {{build.commit}} failed. Fix me please.
+        Sorry, build {{build.number}} commit {{build.commit}} failed. Fix me please.
       {{/success}}
