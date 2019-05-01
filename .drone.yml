@@ -20,6 +20,7 @@ pipeline:
       - sh deploy.sh ${DRONE_COMMIT}
     when:
       event: [push, tag, deployment]
+      #local: true
       
   slack:
     image: plugins/slack
