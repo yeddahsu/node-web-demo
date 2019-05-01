@@ -19,8 +19,8 @@ pipeline:
       - cd /home/yedda/deploy
       - sh deploy.sh ${DRONE_COMMIT}
     when:
-      event: [tag, deployment]
-
+      event: [push, tag, deployment]
+      
   slack:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/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
