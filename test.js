@@ -11,7 +11,7 @@ describe('Test function "testMe"', function () {
             .expect((res) => {
                 expect(res.body).toMatchObject({
                     name: 'IWA',
-                    grade: 102
+                    grade: 103
                 });
             })
             .end(done);
